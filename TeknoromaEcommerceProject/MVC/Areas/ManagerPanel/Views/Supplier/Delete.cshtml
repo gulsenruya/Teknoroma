@@ -1,0 +1,31 @@
+﻿@model Supplier
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/ManagerPanel/Views/Shared/_ManagerLayout.cshtml";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card card-danger">
+            <div class="card-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Tedarikçi Sil</h2>
+                        </div>
+                        <div class="col-sm-6">
+                            <a asp-action="Index" asp-controller="Supplier" class="btn btn-success float-md-right">Tedarikçi Listesi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <form asp-action="Delete" asp-controller="Supplier" method="post">
+                    <p>@Model.CompanyName Tedarikçini silmek istediğinize emin misiniz ?</p>
+                    <button type="submit" class="btn btn-danger">Tedarikçi Sil</button>
+                    <a asp-action="Index" asp-controller="Supplier" class="btn btn-default">Iptal</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,32 @@
+﻿@model Brand
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/ManagerPanel/Views/Shared/_ManagerLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-danger">
+            <div class="card-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Marka Sil</h2>
+                        </div>
+                        <div class="col-sm-6">
+                            <a asp-action="Index" asp-controller="Brand" class="btn btn-success float-md-right">Marka Listesi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <form asp-action="Delete" asp-controller="Brand" method="post">
+                    <p>@Model.BrandName markasını silmek istediğinize emin misiniz ?</p>
+                    <button type="submit" class="btn btn-danger">Marka Sil</button>
+                    <a asp-action="Index" asp-controller="Brand" class="btn btn-default">Iptal</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

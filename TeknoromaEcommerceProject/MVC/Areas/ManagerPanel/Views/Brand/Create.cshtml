@@ -1,0 +1,38 @@
+﻿@model Brand
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/ManagerPanel/Views/Shared/_ManagerLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Marka Ekle</h2>
+                        </div>
+                        <div class="col-sm-6">
+                            <a asp-action="Index" asp-controller="Brand" class="btn btn-success float-md-right">Marka Listesi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create" asp-controller="Brand" method="post">
+                    <div class="form-group">
+                        <label>Marka Adı</label>
+                        <input asp-for="BrandName" type="text" class="form-control" placeholder="MArka Adı Giriniz" />
+                    </div>
+                    <div class="form-group">
+                        <label>MArka Açıklama</label>
+                        <input asp-for="Description" type="text" class="form-control" placeholder="Açıklama Ekleyiniz" />
+                    </div>                   
+                    <button type="submit" class="btn btn-success">Marka Ekle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,38 @@
+﻿@model Supplier
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/ManagerPanel/Views/Shared/_ManagerLayout.cshtml";
+}
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h2>Tedarikçi Ekle</h2>
+                            </div>
+                            <div class="col-sm-6">
+                                <a asp-action="Index" asp-controller="Supplier" class="btn btn-success float-md-right">Tedarikçi Listesi</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" asp-controller="Supplier" method="post">
+                        <div class="form-group">
+                            <label>Tedarikçi Adı</label>
+                            <input asp-for="CompanyName" type="text" class="form-control" placeholder="Tedarikçi Adı Giriniz" />
+                        </div>
+                        <div class="form-group">
+                            <label>Tedarikçi Açıklama</label>
+                            <input asp-for="Description" type="text" class="form-control" placeholder="Açıklama Ekleyiniz" />
+                        </div>                      
+                        <button type="submit" class="btn btn-success">Tedarikçi Ekle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+

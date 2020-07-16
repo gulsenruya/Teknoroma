@@ -1,0 +1,132 @@
+﻿@model List<MVC.Models.CartModel.CartItem>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> signInManager;
+@inject UserManager<AppUser> userManager;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal? total = 0;
+}
+
+@if (ViewBag.ErrorCart!=null)
+{
+    <div class="main-content-box checkout-empty-cart-box">
+        <div class="icontext mr-4">
+            <i class="icon icon-sm rounded-circle bg-light"></i>
+            <span class="count">0</span>
+        </div>
+        <div class="empty-cart-title">
+            Sepetinizde Ürün Yok
+        </div>
+        <div class="empty-card-description">
+            Sepetinize ürün tanımlamak için anasayfaya dönebilirsiniz.
+        </div>
+        <div class="empty-card-button">
+            <a asp-action="Index" asp-controller="Home" class="button button-block button-bold button--primary">Alışverişe Devam Et</a>
+
+        </div>
+    </div>
+}
+else
+{
+    <div class="container">
+
+        <div class="row">
+            <aside class="col-lg-9">
+                <div class="card">
+                    <table class="table table-borderless table-shopping-cart">
+                        <thead class="text-muted">
+                            <tr class="small text-uppercase">
+                                <th scope="col">Product</th>
+                                <th scope="col" width="120">Adet</th>
+                                <th scope="col" width="120">Fiyat</th>
+                                <th scope="col" class="text-right" width="200">Sil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                total += item.SubTotal;
+                            <tr>
+                                <td>
+                                    <figure class="itemside align-items-center">
+                                        <div class="aside">
+                                            @if (item.ImagePath != null)
+                                            {
+                                                <img src="~/images/products/@item.ImagePath" class="img-sm">
+                                            }
+                                            else
+                                            {
+                                                <img src="~/images/product/nologo.png" class="img-sm">
+                                            }
+                                        </div>
+                                        <figcaption class="info">
+                                            <a href="#" class="title text-dark">@item.Name</a>
+                                        </figcaption>
+                                    </figure>
+                                </td>  
+                                <td>
+                                    <div class="input-group input-spinner">
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-light" type="button" id="button-plus"> + </button>
+                                        </div>
+                                        <input type="text" class="form-control" value="1">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-light" type="button" id="button-minus"> − </button>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="price-wrap">
+                                        <var class="price">@item.Price</var>
+                                    </div> <!-- price-wrap .// -->
+                                </td>
+                                <td class="text-right">                                   
+                                    <a asp-action="Delete" asp-controller="Cart" asp-route-id="@item.ID" class="btn btn-light"> <i class="fa fa-trash"></i> </a>
+
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <div class="card-body border-top">
+                        <p class="icontext"><i class="icon text-success fa fa-truck"></i> Free Delivery within 1-2 weeks</p>
+                    </div> <!-- card-body.// -->
+
+                </div> <!-- card.// -->
+
+            </aside> <!-- col.// -->
+            <aside class="col-lg-3">
+
+
+
+                <div class="card">
+                    <div class="card-body">
+                        <dl class="dlist-align">
+                            <dt>Total price:</dt>
+                            <dd class="text-right">@total.ToString()</dd>
+                        </dl>
+                        <hr>
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            var user = await userManager.GetUserAsync(User);
+                            <a asp-action="Delivery" asp-controller="Cart" class="btn btn-primary btn-block"> Alışverişi Tamamla </a>
+                        }
+                        else
+                        {
+                            <a asp-action="Login" asp-controller="Account" asp-area="Member" class="btn btn-primary btn-block"> Alışverişi tamamlamak için giriş yap</a>
+                        }
+                        <a asp-action="Index" asp-controller="Home" class="btn btn-light btn-block">Alışverişe Devam Et</a>
+                    </div> <!-- card-body.// -->
+                </div> <!-- card.// -->
+
+            </aside> <!-- col.// -->
+
+
+        </div>
+    </div>
+
+}
+
+

@@ -1,0 +1,88 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/ManagerPanel/Views/Shared/_ManagerLayout.cshtml";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Ürün Ekle</h2>
+                        </div>
+                        <div class="col-sm-6">
+                            <a asp-action="Index" asp-controller="Product" class="btn btn-success float-md-right">Ürün Listesi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        @if (Model.ImagePath == "nologo.jpg")
+                        {
+                            <img class="img-fluid" style="width:250px; height:auto;" src="~/images/products/@Model.ImagePath">
+                        }
+                        else
+                        {
+                            <img class="img-fluid" style="width:250px; height:auto;" src="~/images/products/@Model.ImagePath">
+                           
+                        }
+                    </div>
+                </div>
+                <form asp-action="Edit" asp-controller="Product" method="post" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="ID" />
+                    <input type="hidden" asp-for="ImagePath" />
+                    <div class="form-group">
+                        <label>Ürün Adı</label>
+                        <input asp-for="ProductName" type="text" class="form-control" placeholder="ürün adı" />
+                    </div>
+                    <div class="form-group">
+                        <label>Stok</label>
+                        <input asp-for="UnitsInStock" type="text" class="form-control" placeholder="stok adet" />
+                    </div>
+                    <div class="form-group">
+                        <label>Fiyat</label>
+                        <input asp-for="Price" type="text" class="form-control" placeholder="fiyat" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ana Kategori</label>
+                        <select asp-for="CategoryId" class="form-control custom-select" asp-items="ViewBag.MainCategories">
+                            <option selected="@Model.CategoryId" disabled>Lütfen Ana Kategori Seçin</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SupplierId"></label>
+                        <select asp-for="SupplierId" class="form-control custom-select" asp-items="ViewBag.Suppliers">
+                            <option selected="" disabled>Lütfen Tedarikçi Seçiniz</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">Fotoğraf Ekle</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile" name="image">
+                                <label class="custom-file-label" for="exampleInputFile">Fotoğraf Seç</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Ürün Güncelle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".custom-file").hide();
+            $("#btnFoto").click(function () {
+                $(".custom-file").show();
+            })
+            bsCustomFileInput.init();
+        });
+    </script>
+}

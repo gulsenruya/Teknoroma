@@ -1,0 +1,74 @@
+﻿@model MVC.Areas.ManagerPanel.Models.ProductCategoryVM
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/ManagerPanel/Views/Shared/_ManagerLayout.cshtml";
+}
+<div class="row">
+    <div class="col-12">
+    <div class="card">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2>Ürün Listesi</h2>
+                </div>
+                <div class="col-sm-6">
+                    <a asp-action="Create" asp-controller="Product" class="btn btn-success float-md-right">Ürün Ekle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-hover" id="product">
+            <thead>
+                <tr>
+                    <th>Ürün Adı</th>
+                    <th>Fiyat</th>
+                    <th>Stok</th>
+                    <th>Kategori</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Products.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="5">
+                            <div class="container text-center">
+                                <div class="alert alert-warning">
+                                    <span>Herhangi bir ürün oluşturulmamış ! Lütfen Ürün Ekleyiniz</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    foreach (var item in Model.Products)
+                    {
+                        <tr>
+                            <td>@item.ProductName</td>
+                            <td>@item.Price</td>
+                            <td>@item.UnitsInStock</td>                            
+                            <td>@Model.Categories.Where(x => x.ID == item.CategoryId).FirstOrDefault().CategoryName</td>
+                            <td>
+
+                                <a asp-action="Edit" asp-controller="Product" asp-route-id="@item.ID" class="btn btn-sm btn-warning">Güncelle</a>
+                                <a asp-action="Delete" asp-controller="Product" asp-route-id="@item.ID" class="btn btn-sm btn-danger">Sil</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+    </div>
+@section scripts{
+    <script>
+    $(function () {
+        $("#product").DataTable();
+    })
+    </script>
+
+}
+

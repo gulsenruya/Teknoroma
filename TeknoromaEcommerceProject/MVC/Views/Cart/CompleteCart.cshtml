@@ -1,0 +1,19 @@
+﻿@model DAL.Entity.Order
+@{
+    ViewData["Title"] = "CompleteCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.OrderDetails.Count() > 0)
+{
+    <div class="alert alert-success">
+        <span>@Model.MasterId nolu siparişiniz oluşturulmuştur.</span>
+    </div>
+}
+else
+{
+    <div class="alert alert-danger">
+        <span>Sepetinizde herhangi bir ürün bulunmamaktadır!</span>
+    </div>
+}
+

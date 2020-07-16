@@ -1,0 +1,71 @@
+﻿@model ProductVM
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="container">
+        <div class="card">
+            <div class="row no-gutters">
+                <aside class="col-md-6">
+                    <article class="gallery-wrap">                    
+
+                        <div class="img-big-wrap">
+                            @if (Model.Product.ImagePath != null)
+                            {
+                                <img src="~/images/products/@Model.Product.ImagePath" class="img-sm">
+                            }
+
+                            else
+                            {
+                                <img src="~/images/product/no-image.jpg">
+                            }
+
+                        </div>
+                     </article>
+                </aside>
+                <main class="col-md-6 border-left">
+                    <article class="content-body">
+
+                        <h2 class="title">@Model.Product.ProductName</h2>
+                        <div class="mb-3">
+                            <var class="price h4">@Model.Product.Price ₺</var>
+                            <span class="text-muted"> 1 Adet</span>
+                        </div>
+                        <hr>
+                        <div class="form-row">
+                            <div class="form-group col-md flex-grow-0">
+                                <label>Adet</label>
+                                <div class="input-group mb-3 input-spinner">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-light" type="button" id="button-plus"> + </button>
+                                    </div>
+                                    <input type="text" class="form-control" value="1">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-light" type="button" id="button-minus"> &minus; </button>
+                                    </div>
+                                </div>
+                            </div>                           
+                        </div> <!-- row.// -->
+
+                        <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model.Product.ID" class="btn btn-outline-primary"> <span class="text">Sepete Ekle</span> <i class="fas fa-shopping-cart"></i>  </a>
+                    </article> <!-- product-info-aside .// -->
+                </main> <!-- col.// -->
+            </div> <!-- row.// -->
+        </div> <!-- card.// -->
+    </div>
+<!-- ============================ COMPONENT 1 END .// ================================= -->
+
+@section scripts{
+    <script>
+    $('#AddToCart').click(function () {
+
+        var path = '/Cart/AddToCart/' + this.id;
+        $.ajax({
+                type: 'GET',
+                url: path                
+        });
+     });
+
+  
+    </script>
+}

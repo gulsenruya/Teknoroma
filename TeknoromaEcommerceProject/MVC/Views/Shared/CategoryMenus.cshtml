@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Category>
+
+<nav class="navbar navbar-main navbar-expand-lg navbar-light">
+    <div class="container">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="main_nav">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link pl-0" data-toggle="dropdown" href="#"><strong> <i class="fa fa-bars"></i> &nbsp  Tüm Kategoriler</strong></a>
+                    <div class="dropdown-menu">
+                        <a asp-controller="Product" asp-action="AllProducts" class="dropdown-item">Tüm Ürünler</a>
+                        @foreach (Category category in Model)
+                        {
+                            <a asp-controller="Category" asp-action="ListProductsOfCategory" asp-route-id="@category.ID" class="dropdown-item">@category.CategoryName</a>
+                        }
+                    </div>
+                </li>
+                @foreach (Category category in Model)
+                {
+                    @if (@category.MainCategory == null)
+                    {
+                        <li class="nav-item dropdown">
+                            <div class="dropdown-menu">
+                                <ul navbar-nav>
+                                    <a asp-controller="Category" asp-action="Index" asp-route-id="@category.ID" class="dropdown-item">@category.CategoryName</a>
+                                </ul>
+                                    
+                            </div>
+                        </li>
+                    }
+                }
+            </ul>
+        </div> <!-- collapse .// -->
+    </div> <!-- container .// -->
+</nav>

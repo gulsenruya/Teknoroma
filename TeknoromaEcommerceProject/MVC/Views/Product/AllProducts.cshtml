@@ -1,0 +1,192 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "AllProducts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section-content padding-y bg">
+    <div class="container">
+
+        <div class="row">
+
+            <main class="col-md-9">
+                <!-- ============================ COMPONENT 1  ================================= -->
+                @foreach (var product in Model)
+                {
+                    <article class="card card-product-list">
+                        <div class="card-body">
+                            <div class="row">
+                                <aside class="col-sm-4">
+                                    <a href="/@product.ID" class="img-wrap"><img src="~/images/products/@product.ImagePath"></a>
+                                </aside> <!-- col.// -->
+                                <div class="col-sm-8">
+
+                                    <a href="~/@product.ID" class="title mt-2 h5">@product.ProductName</a>
+                                    <div class="d-flex mb-3">
+                                        <div class="price-wrap mr-4">
+                                            <span class="price h5">@product.Price</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mb-3">
+                                        <div class="rating-wrap">
+                                            <ul class="list-bullet">
+                                                <li>@product.ProductName</li>
+
+                                            </ul>
+                                        </div>
+
+
+                                    </div>
+                                    <br />
+                                    <br />
+                                    <div class="d-flex mb-3">
+                                        <div class="form-group col-md">
+                                            <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@product.ID" class="btn btn-outline-primary"> <span class="text">Sepete Ekle</span> <i class="fas fa-shopping-cart"></i>  </a>
+
+                                        </div>
+                                    </div>
+                                    <!-- price-dewrap // -->
+                                    <!-- row.// -->
+
+                                </div> <!-- col.// -->
+                            </div> <!-- row.// -->
+                        </div> <!-- card-body .// -->
+                    </article>
+                }
+
+            </main> <!-- col.// -->
+            <aside class="col-md-3">
+                <!-- COMPONENTS SIDEBAR -->
+                <output>
+                    <div class="card">
+                        <article class="filter-group">
+                            <header class="card-header">
+                                <a href="#" data-toggle="collapse" data-target="#collapse_aside1">
+                                    <i class="icon-control fa fa-chevron-down"></i>
+                                    <h6 class="title">Kategoriler </h6>
+                                </a>
+                            </header>
+                            <div class="filter-content collapse show" id="collapse_aside1">
+                                <div class="card-body">
+                                    <ul class="list-menu">
+                                        <li><a href="#">Electronics </a></li>
+                                        <li><a href="#">Watches  </a></li>
+                                        <li><a href="#">Cinema </a></li>
+                                        <li><a href="#">Clothes </a></li>
+                                        <li><a href="#">Home items </a></li>
+                                    </ul>
+
+                                </div> <!-- card-body.// -->
+                            </div>
+                        </article> <!-- filter-group  .// -->
+                        <article class="filter-group">
+                            <header class="card-header">
+                                <a href="#" data-toggle="collapse" data-target="#collapse_aside2">
+                                    <i class="icon-control fa fa-chevron-down"></i>
+                                    <h6 class="title">Price </h6>
+                                </a>
+                            </header>
+                            <div class="filter-content collapse show" id="collapse_aside2">
+                                <div class="card-body">
+                                    <input type="range" class="custom-range" min="0" max="100" name="">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Min</label>
+                                            <input class="form-control" placeholder="$0" type="number">
+                                        </div>
+                                        <div class="form-group text-right col-md-6">
+                                            <label>Max</label>
+                                            <input class="form-control" placeholder="$1,0000" type="number">
+                                        </div>
+                                    </div> <!-- form-row.// -->
+                                    <button class="btn btn-block btn-primary">Apply</button>
+                                </div> <!-- card-body.// -->
+                            </div>
+                        </article> <!-- filter-group  .// -->
+                        <article class="filter-group">
+                            <header class="card-header">
+                                <a href="#" data-toggle="collapse" data-target="#collapse_aside3">
+                                    <i class="icon-control fa fa-chevron-down"></i>
+                                    <h6 class="title">Size </h6>
+                                </a>
+                            </header>
+                            <div class="filter-content collapse show" id="collapse_aside3">
+                                <div class="card-body">
+                                    <label class="checkbox-btn">
+                                        <input type="checkbox">
+                                        <span class="btn btn-light"> XS </span>
+                                    </label>
+
+                                    <label class="checkbox-btn">
+                                        <input type="checkbox">
+                                        <span class="btn btn-light"> SM </span>
+                                    </label>
+
+                                    <label class="checkbox-btn">
+                                        <input type="checkbox">
+                                        <span class="btn btn-light"> LG </span>
+                                    </label>
+
+                                    <label class="checkbox-btn">
+                                        <input type="checkbox">
+                                        <span class="btn btn-light"> XXL </span>
+                                    </label>
+                                </div> <!-- card-body.// -->
+                            </div>
+                        </article> <!-- filter-group  .// -->
+                        <article class="filter-group">
+                            <header class="card-header">
+                                <a href="#" data-toggle="collapse" data-target="#collapse_aside4">
+                                    <i class="icon-control fa fa-chevron-down"></i>
+                                    <h6 class="title">Rating </h6>
+                                </a>
+                            </header>
+                            <div class="filter-content collapse" id="collapse_aside4">
+                                <div class="card-body">
+                                    <label class="custom-control custom-checkbox">
+                                        <input type="checkbox" checked="" class="custom-control-input">
+                                        <div class="custom-control-label">Best  </div>
+                                    </label>
+
+                                    <label class="custom-control custom-checkbox">
+                                        <input type="checkbox" checked="" class="custom-control-input">
+                                        <div class="custom-control-label">Good </div>
+                                    </label>
+
+                                    <label class="custom-control custom-checkbox">
+                                        <input type="checkbox" checked="" class="custom-control-input">
+                                        <div class="custom-control-label">Normal</div>
+                                    </label>
+
+                                    <label class="custom-control custom-checkbox">
+                                        <input type="checkbox" checked="" class="custom-control-input">
+                                        <div class="custom-control-label">Not good</div>
+                                    </label>
+                                </div> <!-- card-body.// -->
+                            </div>
+                        </article> <!-- filter-group  .// -->
+                    </div> <!-- card.// -->
+                </output>
+                <!-- COMPONENTS SIDEBAR END .// -->
+            </aside>
+
+
+        </div> <!-- row.// -->
+
+    </div> <!-- container .//  -->
+</section>
+
+@section scripts{
+    <script>
+    $('#addToCart').click(function () {
+
+        var path = '/Cart/AddToCart/' + this.id;
+        $.ajax({
+                type: 'GET',
+                url: path
+        });
+     });
+
+
+    </script>
+}

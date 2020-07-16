@@ -1,0 +1,33 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/ManagerPanel/Views/Shared/_ManagerLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card card-danger">
+            <div class="card-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Kategori Sil</h2>
+                        </div>
+                        <div class="col-sm-6">
+                            <a asp-action="Index" asp-controller="Category" class="btn btn-success float-md-right">Kategori Listesi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <form asp-action="Delete" asp-controller="Category" method="post">
+                    <p>@Model.CategoryName kategorisinisilmek istediğinize emin misiniz ?</p>
+                    <button type="submit" class="btn btn-danger">Kategori Sil</button>
+                    <a asp-action="Index" asp-controller="Category" class="btn btn-default">Iptal</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

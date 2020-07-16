@@ -1,0 +1,16 @@
+C:\Users\gulsen\source\repos\TeknoromaEcommerceProject\DAL\bin\Debug\netcoreapp3.1\DAL.deps.json
+C:\Users\gulsen\source\repos\TeknoromaEcommerceProject\DAL\bin\Debug\netcoreapp3.1\DAL.dll
+C:\Users\gulsen\source\repos\TeknoromaEcommerceProject\DAL\obj\Debug\netcoreapp3.1\DAL.csprojAssemblyReference.cache
+C:\Users\gulsen\source\repos\TeknoromaEcommerceProject\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfoInputs.cache
+C:\Users\gulsen\source\repos\TeknoromaEcommerceProject\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfo.cs
+C:\Users\gulsen\source\repos\TeknoromaEcommerceProject\DAL\bin\Debug\netcoreapp3.1\DAL.pdb
+C:\Users\gulsen\source\repos\TeknoromaEcommerceProject\DAL\obj\Debug\netcoreapp3.1\DAL.dll
+C:\Users\gulsen\source\repos\TeknoromaEcommerceProject\DAL\obj\Debug\netcoreapp3.1\DAL.pdb
+C:\Users\gulsen\Source\Repos\BilgeAdamBitirmeProjesi\TeknoromaEcommerceProject\DAL\bin\Debug\netcoreapp3.1\DAL.deps.json
+C:\Users\gulsen\Source\Repos\BilgeAdamBitirmeProjesi\TeknoromaEcommerceProject\DAL\bin\Debug\netcoreapp3.1\DAL.dll
+C:\Users\gulsen\Source\Repos\BilgeAdamBitirmeProjesi\TeknoromaEcommerceProject\DAL\bin\Debug\netcoreapp3.1\DAL.pdb
+C:\Users\gulsen\Source\Repos\BilgeAdamBitirmeProjesi\TeknoromaEcommerceProject\DAL\obj\Debug\netcoreapp3.1\DAL.csprojAssemblyReference.cache
+C:\Users\gulsen\Source\Repos\BilgeAdamBitirmeProjesi\TeknoromaEcommerceProject\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfoInputs.cache
+C:\Users\gulsen\Source\Repos\BilgeAdamBitirmeProjesi\TeknoromaEcommerceProject\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfo.cs
+C:\Users\gulsen\Source\Repos\BilgeAdamBitirmeProjesi\TeknoromaEcommerceProject\DAL\obj\Debug\netcoreapp3.1\DAL.dll
+C:\Users\gulsen\Source\Repos\BilgeAdamBitirmeProjesi\TeknoromaEcommerceProject\DAL\obj\Debug\netcoreapp3.1\DAL.pdb

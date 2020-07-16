@@ -1,0 +1,56 @@
+﻿@model  MVC.Areas.ManagerPanel.Models.AppUserVM
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/ManagerPanel/Views/Shared/_ManagerLayout.cshtml";
+}
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h2>Üye Ol</h2>
+            </div>
+            <div class="card-body">
+                <div class="register-box">
+
+                    <div class="card">
+                        <div class="card-body register-card-body">
+                            <p class="login-box-msg">Yeni Kullanıcı Oluştur</p>
+
+                            <form asp-action="Create" asp-controller="AppUser" method="post">
+                                <div class="input-group mb-3">
+                                    <input asp-for="UserName" type="text" class="form-control" placeholder="kullanıcı adı">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="fas fa-user"></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input asp-for="Email" type="email" class="form-control" placeholder="Email">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="fas fa-envelope"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input asp-for="Password" type="password" class="form-control" placeholder="Şifre">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="fas fa-lock"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary" type="submit">Hesap Oluştur</button>
+                            </form>
+
+                            <a asp-action="Login" asp-controller="AppUser" class="text-center">LOGIN</a>
+                        </div>
+                        <!-- /.form-box -->
+                    </div><!-- /.card -->
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
