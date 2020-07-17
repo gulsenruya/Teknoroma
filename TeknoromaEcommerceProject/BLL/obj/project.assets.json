@@ -910,11 +910,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gulsen\\Source\\Repos\\BilgeAdamBitirmeProjesi\\TeknoromaEcommerceProject\\BLL\\BLL.csproj",
+      "projectUniqueName": "C:\\Users\\gulsen\\Source\\Repos\\Teknoroma\\TeknoromaEcommerceProject\\BLL\\BLL.csproj",
       "projectName": "BLL",
-      "projectPath": "C:\\Users\\gulsen\\Source\\Repos\\BilgeAdamBitirmeProjesi\\TeknoromaEcommerceProject\\BLL\\BLL.csproj",
+      "projectPath": "C:\\Users\\gulsen\\Source\\Repos\\Teknoroma\\TeknoromaEcommerceProject\\BLL\\BLL.csproj",
       "packagesPath": "C:\\Users\\gulsen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gulsen\\Source\\Repos\\BilgeAdamBitirmeProjesi\\TeknoromaEcommerceProject\\BLL\\obj\\",
+      "outputPath": "C:\\Users\\gulsen\\Source\\Repos\\Teknoroma\\TeknoromaEcommerceProject\\BLL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -933,8 +933,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\gulsen\\Source\\Repos\\BilgeAdamBitirmeProjesi\\TeknoromaEcommerceProject\\DAL\\DAL.csproj": {
-              "projectPath": "C:\\Users\\gulsen\\Source\\Repos\\BilgeAdamBitirmeProjesi\\TeknoromaEcommerceProject\\DAL\\DAL.csproj"
+            "C:\\Users\\gulsen\\Source\\Repos\\Teknoroma\\TeknoromaEcommerceProject\\DAL\\DAL.csproj": {
+              "projectPath": "C:\\Users\\gulsen\\Source\\Repos\\Teknoroma\\TeknoromaEcommerceProject\\DAL\\DAL.csproj"
             }
           }
         }

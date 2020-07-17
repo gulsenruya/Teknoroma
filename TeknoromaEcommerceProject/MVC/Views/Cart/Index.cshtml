@@ -8,29 +8,34 @@
     decimal? total = 0;
 }
 
-@if (ViewBag.ErrorCart!=null)
+@if (TempData["ErrorCart"]!=null)
 {
-    <div class="main-content-box checkout-empty-cart-box">
-        <div class="icontext mr-4">
-            <i class="icon icon-sm rounded-circle bg-light"></i>
-            <span class="count">0</span>
-        </div>
-        <div class="empty-cart-title">
-            Sepetinizde Ürün Yok
-        </div>
-        <div class="empty-card-description">
-            Sepetinize ürün tanımlamak için anasayfaya dönebilirsiniz.
-        </div>
-        <div class="empty-card-button">
-            <a asp-action="Index" asp-controller="Home" class="button button-block button-bold button--primary">Alışverişe Devam Et</a>
+    <div class="container">
+        <div class="row">
+            
+            <aside class="col-lg-9">
+                
+                    <div class="main-content-box checkout-empty-cart-box">
+                        <div class="icon">
+                            <i class="icon-sm rounded-circle border fa fa-shopping-cart"></i>
+                            <span class="notify">0</span>
+                        </div>
+                        
+                        <div class="empty-card-button">
+                            <a asp-action="Index" asp-controller="Home" class="button button-block button-bold button--primary">Alışverişe Devam Et</a>
+
+                        </div>
+                  
+                </div>
+            </aside>
 
         </div>
     </div>
+    
 }
 else
 {
     <div class="container">
-
         <div class="row">
             <aside class="col-lg-9">
                 <div class="card">
@@ -98,9 +103,6 @@ else
 
             </aside> <!-- col.// -->
             <aside class="col-lg-3">
-
-
-
                 <div class="card">
                     <div class="card-body">
                         <dl class="dlist-align">
@@ -115,7 +117,7 @@ else
                         }
                         else
                         {
-                            <a asp-action="Login" asp-controller="Account" asp-area="Member" class="btn btn-primary btn-block"> Alışverişi tamamlamak için giriş yap</a>
+                    <a asp-action="SignedIn" asp-controller="Cart" class="btn btn-primary btn-block">Alışverişi Tamamla </a>
                         }
                         <a asp-action="Index" asp-controller="Home" class="btn btn-light btn-block">Alışverişe Devam Et</a>
                     </div> <!-- card-body.// -->

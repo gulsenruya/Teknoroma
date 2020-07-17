@@ -40,7 +40,9 @@ namespace MVC.Controllers
             }
             else
             {
-                ViewBag.ErrorCart = "Sepetinizde ürün bulunmamaktadır lütfe ürün ekleyiniz !";
+                //ViewBag.ErrorCart = "Sepetinizde ürün bulunmamaktadır lütfe ürün ekleyiniz !";
+                //TempData nesnesini eğer ki bir daha kullanmak istersek bir sonraki redirek ettiğimiz actionda herhangi bir işleme mağruz kalmadan kullanabiliriz. Fakat ViewBag ve ViewData nesnelerine ulaşamayız. 
+                TempData["ErrorCart"] = "Sepetinizde ürün bulunmamaktadır lütfen ürün ekleyiniz!";
                 return View();
             }
 
@@ -141,7 +143,20 @@ namespace MVC.Controllers
             return RedirectToAction("Shipment");
 
         }
-       
+        public IActionResult SignedIn()
+        {
+            if (signInManager.IsSignedIn(User))
+            {
+
+                return Redirect("/Cart/Delivery");
+            }
+            else
+            {
+                return Redirect("/Member/Account/Login");
+            }
+            
+        }
+
     }
 
 }

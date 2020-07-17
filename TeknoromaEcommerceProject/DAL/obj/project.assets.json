@@ -892,11 +892,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gulsen\\Source\\Repos\\BilgeAdamBitirmeProjesi\\TeknoromaEcommerceProject\\DAL\\DAL.csproj",
+      "projectUniqueName": "C:\\Users\\gulsen\\Source\\Repos\\Teknoroma\\TeknoromaEcommerceProject\\DAL\\DAL.csproj",
       "projectName": "DAL",
-      "projectPath": "C:\\Users\\gulsen\\Source\\Repos\\BilgeAdamBitirmeProjesi\\TeknoromaEcommerceProject\\DAL\\DAL.csproj",
+      "projectPath": "C:\\Users\\gulsen\\Source\\Repos\\Teknoroma\\TeknoromaEcommerceProject\\DAL\\DAL.csproj",
       "packagesPath": "C:\\Users\\gulsen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gulsen\\Source\\Repos\\BilgeAdamBitirmeProjesi\\TeknoromaEcommerceProject\\DAL\\obj\\",
+      "outputPath": "C:\\Users\\gulsen\\Source\\Repos\\Teknoroma\\TeknoromaEcommerceProject\\DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

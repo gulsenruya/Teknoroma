@@ -9,3 +9,14 @@ C:\Users\gulsen\Source\Repos\BilgeAdamBitirmeProjesi\TeknoromaEcommerceProject\B
 C:\Users\gulsen\Source\Repos\BilgeAdamBitirmeProjesi\TeknoromaEcommerceProject\BLL\obj\Debug\netcoreapp3.1\BLL.csproj.CopyComplete
 C:\Users\gulsen\Source\Repos\BilgeAdamBitirmeProjesi\TeknoromaEcommerceProject\BLL\obj\Debug\netcoreapp3.1\BLL.dll
 C:\Users\gulsen\Source\Repos\BilgeAdamBitirmeProjesi\TeknoromaEcommerceProject\BLL\obj\Debug\netcoreapp3.1\BLL.pdb
+C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\BLL\bin\Debug\netcoreapp3.1\BLL.deps.json
+C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\BLL\bin\Debug\netcoreapp3.1\BLL.dll
+C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\BLL\bin\Debug\netcoreapp3.1\BLL.pdb
+C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\BLL\bin\Debug\netcoreapp3.1\DAL.dll
+C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\BLL\bin\Debug\netcoreapp3.1\DAL.pdb
+C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\BLL\obj\Debug\netcoreapp3.1\BLL.csprojAssemblyReference.cache
+C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\BLL\obj\Debug\netcoreapp3.1\BLL.AssemblyInfoInputs.cache
+C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\BLL\obj\Debug\netcoreapp3.1\BLL.AssemblyInfo.cs
+C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\BLL\obj\Debug\netcoreapp3.1\BLL.csproj.CopyComplete
+C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\BLL\obj\Debug\netcoreapp3.1\BLL.dll
+C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\BLL\obj\Debug\netcoreapp3.1\BLL.pdb

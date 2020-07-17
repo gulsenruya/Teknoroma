@@ -8445,11 +8445,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gulsen\\Source\\Repos\\BilgeAdamBitirmeProjesi\\TeknoromaEcommerceProject\\MVC\\MVC.csproj",
+      "projectUniqueName": "C:\\Users\\gulsen\\Source\\Repos\\Teknoroma\\TeknoromaEcommerceProject\\MVC\\MVC.csproj",
       "projectName": "MVC",
-      "projectPath": "C:\\Users\\gulsen\\Source\\Repos\\BilgeAdamBitirmeProjesi\\TeknoromaEcommerceProject\\MVC\\MVC.csproj",
+      "projectPath": "C:\\Users\\gulsen\\Source\\Repos\\Teknoroma\\TeknoromaEcommerceProject\\MVC\\MVC.csproj",
       "packagesPath": "C:\\Users\\gulsen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gulsen\\Source\\Repos\\BilgeAdamBitirmeProjesi\\TeknoromaEcommerceProject\\MVC\\obj\\",
+      "outputPath": "C:\\Users\\gulsen\\Source\\Repos\\Teknoroma\\TeknoromaEcommerceProject\\MVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -8468,11 +8468,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\gulsen\\Source\\Repos\\BilgeAdamBitirmeProjesi\\TeknoromaEcommerceProject\\BLL\\BLL.csproj": {
-              "projectPath": "C:\\Users\\gulsen\\Source\\Repos\\BilgeAdamBitirmeProjesi\\TeknoromaEcommerceProject\\BLL\\BLL.csproj"
+            "C:\\Users\\gulsen\\Source\\Repos\\Teknoroma\\TeknoromaEcommerceProject\\BLL\\BLL.csproj": {
+              "projectPath": "C:\\Users\\gulsen\\Source\\Repos\\Teknoroma\\TeknoromaEcommerceProject\\BLL\\BLL.csproj"
             },
-            "C:\\Users\\gulsen\\Source\\Repos\\BilgeAdamBitirmeProjesi\\TeknoromaEcommerceProject\\DAL\\DAL.csproj": {
-              "projectPath": "C:\\Users\\gulsen\\Source\\Repos\\BilgeAdamBitirmeProjesi\\TeknoromaEcommerceProject\\DAL\\DAL.csproj"
+            "C:\\Users\\gulsen\\Source\\Repos\\Teknoroma\\TeknoromaEcommerceProject\\DAL\\DAL.csproj": {
+              "projectPath": "C:\\Users\\gulsen\\Source\\Repos\\Teknoroma\\TeknoromaEcommerceProject\\DAL\\DAL.csproj"
             }
           }
         }
