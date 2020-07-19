@@ -1,0 +1,61 @@
+﻿@model AddressVM
+@{
+    ViewData["Title"] = "Shipment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="container">
+        <div class="card-header">
+            <h6>Kargo Firması Seçiniz</h6>
+        </div>
+        <div class="card-body">
+            <div class="col-md-6 col-sm-12" style="float: left;">
+                <div class="main-content-box checkout-products-box">
+                    <div class="list-group" id="shipmentList">
+                        @if (Model.Shippers.Count > 0)
+                        {
+
+                            @foreach (var item in Model.Shippers)
+                            {
+                                <article class="list-group-item">
+                                    <header class="filter-header">
+                                        <a href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" class="">
+                                            <i class="icon-control fa fa-chevron-down"></i>
+                                            <h6 class="title">@item.CompanyName</h6>
+                                        </a>
+                                    </header>
+
+                                    <div class="text-right">
+                                        <button class="btn btn-success btn-md chooseal" id="@item.ID">Seç</button>
+                                    </div>
+                                </article>
+                            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+         $('#shipmentList').on('click', 'button', function () {
+            var shipmentId = $(this).attr('id');
+            var buttonValue = $(this).attr('class');
+            if (buttonValue == 'btn btn-success btn-md chooseal') {
+                var path = '/Cart/ShipmentSelect/' + shipmentId;
+                $.ajax({
+                    url: path,
+                    type: 'GET',
+                    success: function () {
+                        $(location).attr('href', 'https://localhost:44347/Cart/CompleteCart');
+                    }
+                });
+            }
+        });
+
+    </script>
+}
+

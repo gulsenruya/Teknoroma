@@ -1,61 +1,142 @@
-﻿@model UserAdress
+﻿@model AddressVM
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> signInManager;
+@inject UserManager<AppUser> userManager;
 @{
     ViewData["Title"] = "Delivery";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal? total = 0;
 }
-    <div class="row">
-        <div class="container">
-            <aside class="col-lg-9">
-                <div class="card-body">
-                    <h4 class="card-title mb-4">Teslimat Adresi</h4>
-                    <form asp-action="Delivery" asp-controller="Cart" method="post" enctype="multipart/form-data">
 
-                        <div class="form-row">
-                            <div class="col form-group">
-                                <label asp-for="FirstName"></label>
-                                <input asp-for="FirstName" type="text" class="form-control" placeholder="Adınızı giriniz">
-                            </div> <!-- form-group end.// -->
-                            <div class="col form-group">
-                                <label asp-for="LastName"></label>
-                                <input asp-for="LastName" type="text" class="form-control" placeholder="Soyadınızı giriniz">
-                            </div> <!-- form-group end.// -->
-                        </div> <!-- form-row end.// -->
+<div class="row">
+    <div class="container">
+        <div class="card alt">
+            <div class="card-header">
+                <h6>Adresinize Teslim Edilecek Ürünler</h6>
+            </div>
+            <div class="card-body">
+                
+                <div class="card">
+                    <table class="table table-borderless table-shopping-cart">
+                        <thead class="text-muted">
+                            <tr class="small text-uppercase">
+                                <th scope="col">Product</th>
+                                <th scope="col" width="120">Adet</th>
+                                <th scope="col" width="120">Fiyat</th>
 
-                        <div class="form-row">
-                            <div class="col form-group">
-                                <label asp-for="Email"></label>
-                                <input asp-for="Email" type="text" class="form-control" placeholder="Email adresinizi giriniz">
-                            </div> <!-- form-group end.// -->
-                            <div class="col form-group">
-                                <label asp-for="Phone"></label>
-                                <input asp-for="Phone" type="text" class="form-control" placeholder="Telefon numaranızı giriniz">
-                            </div> <!-- form-group end.// -->
-                        </div> <!-- form-row end.// -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.cartItems)
+                            {
+                                total += item.SubTotal;
+                                <tr>
+                                    <td>
+                                        <figure class="itemside align-items-center">
+                                            <div class="aside">
+                                                @if (item.ImagePath != null)
+                                                {
+                                                    <img src="~/images/products/@item.ImagePath" class="img-sm">
+                                                }
+                                                else
+                                                {
+                                                    <img src="~/images/products/nologo.png" class="img-sm">
+                                                }
+                                            </div>
+                                            <figcaption class="info">
+                                                <a href="#" class="title text-dark">@item.Name</a>
+                                            </figcaption>
+                                        </figure>
+                                    </td>
+                                    <td>
+                                        <div class="price-wrap">
+                                            <var class="price">@item.Quantity</var>
+                                        </div> <!-- price-wrap .// -->
+                                    </td>
+                                    <td>
+                                        <div class="price-wrap">
+                                            <var class="price">@item.Price</var>
+                                        </div> <!-- price-wrap .// -->
+                                    </td>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label asp-for="City"></label>
-                                <input asp-for="City" type="text" class="form-control" placeholder="Şehir bilgisini giriniz">
-                            </div> <!-- form-group end.// -->
+                                </tr>
 
-                            <div class="form-group col-md-6">
-                                <label asp-for="Town"></label>
-                                <input asp-for="Town" type="text" class="form-control" placeholder="İlçe bilgisini giriniz">
-                            </div> <!-- form-group end.// -->
-                        </div> <!-- form-row.// -->
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label asp-for="FullAdress"></label>
-                                <input asp-for="FullAdress" type="text" class="form-control" placeholder="Adres tanımı yapınız">
-                            </div> <!-- form-group end.// -->                            
-                        </div> <!-- form-row.// -->
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block"> Devam Et  </button>
-                        </div> <!-- form-group// -->
-                    </form>
-                </div>
-            </aside>
+                                @*<div class="product-item" style="border-bottom: 1px solid #e1e1e1;padding: 20px 0;margin: 0 30px;position: relative;">
+
+                                </div>*@
+
+                            }
+                        </tbody>
+                    </table>
+                   
+
+                </div> <!-- card.// -->
+
+               
+            </div>
+            <div class="card-body">
+    <aside class="col-md-4 special">
+        <div class="list-group" id="userAddressList">
+            @if (Model.UserAdresses.Count > 0)
+            {
+
+                @foreach (var item in Model.UserAdresses)
+                {
+                    <article class="list-group-item">
+                        <header class="filter-header">
+                            <a href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" class="">
+                                <i class="icon-control fa fa-chevron-down"></i>
+                                <h6 class="title">@item.AdressName</h6>
+                            </a>
+                        </header>
+                        <div class="filter-content collapse show" id="collapse1" style="">
+                            <label>Ad Soyad: @item.FirstName</label>
+                            <label>&nbsp; @item.LastName</label><br />
+                            <label>  Şehir: @item.City /</label>
+                            <label>&nbsp;@item.Town</label><br />
+                            <label>  Email: @item.Email</label><br />
+                            <label>Telefon: @item.Phone</label><br />
+                            <label>  Adres: @item.FullAdress</label>
+                            <div class="text-right">
+                                <button class="btn btn-success btn-md chooseal" id="@item.ID">Seç</button>
+                            </div>
+                        </div>
+                    </article>
+                }
+            }
+            else
+            {
+                <a asp-controller="Cart" asp-action="DeliveryAdd" class="btn btn-primary btn-block"> Teslimat Adresi Ekle </a>
+            }
+            <a asp-controller="Cart" asp-action="DeliveryAdd" class="btn btn-primary btn-block"> Yeni Adres Ekle </a>
+        </div>
+    </aside>
+            </div>
+            
+            
+            
         </div>
     </div>
+</div>
 
-   
+@section scripts{
+    <script>
+        $('#userAddressList').on('click', 'button', function () {
+            var userAdressId = $(this).attr('id');
+            var buttonValue = $(this).attr('class');
+            if (buttonValue == 'btn btn-success btn-md chooseal') {
+                var path = '/Cart/AdressSelect/' + userAdressId;
+                $.ajax({
+                    type: 'GET',
+                    url: path,
+                    success: function () {
+                        $(location).attr('href', 'https://localhost:44347/Cart/Shipment');
+                    }
+                });
+            }
+        });
+        
+    </script>
+}
+
+

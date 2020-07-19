@@ -93,9 +93,11 @@ namespace MVC.Controllers
             if (signInManager.IsSignedIn(User))
             {
                 var user = await userManager.GetUserAsync(User);
+                var userAdress = userAdressService.GetAdress(user.Id);
                 order.AppUser = user;
                 order.Confirmed = false;
                 order.ShipperId = cartSession.ShipperId;
+                order.AdressId = userAdress.ID;
             }
             else
             {
@@ -108,14 +110,15 @@ namespace MVC.Controllers
                     var product = productService.GetById(item.ID);
                     orderDetail.Quantity = item.Quantity;
                     orderDetail.Products = product;
+                    orderDetail.UnitPrice = item.Price;
                     order.OrderDetails.Add(orderDetail);
                 }
             }
+            
             Random rnd = new Random();
             int rndMasterId = rnd.Next(000000001, 999999999);
-            order.MasterId = rndMasterId;
+            order.MasterId = rndMasterId;            
             orderService.Add(order);
-
             
             foreach (var item in cartSession.MyCart)
             {
@@ -127,21 +130,51 @@ namespace MVC.Controllers
             return View(order);
 
         }
-        public IActionResult Delivery()
+        public IActionResult DeliveryAdd()
         {
             return View();
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public async Task<IActionResult> DeliveryAsync(UserAdress userAdress)
+        public async Task<IActionResult> DeliveryAdd(UserAdress userAdress)
         {
             AppUser appUser = await userManager.GetUserAsync(User);
-
             userAdress.AppUserId = appUser.Id;
             userAdressService.Add(userAdress);
-            
+            //var name=userAdress.AdressName;
             return RedirectToAction("Shipment");
 
+        }
+        public async Task<IActionResult> Delivery()
+        {
+            AddressVM addressVM = new AddressVM();
+            if (signInManager.IsSignedIn(User))
+            {
+                AppUser appUser = await userManager.GetUserAsync(User);
+                if (appUser != null)
+                {
+                    //address                    
+                    var userAdress = userAdressService.GetByIdUser(appUser.Id);                    
+                    List<UserAdress> userAdresList = new List<UserAdress>();
+                    foreach (var item in userAdress)
+                    {
+                        userAdresList.Add(item);
+                    }
+                    addressVM.UserAdresses = userAdresList;
+                   
+                }
+            }
+            Cart cartSession = SessionHelper.GetProductFromJson<Cart>(HttpContext.Session, "cart");
+            addressVM.cartItems = cartSession.MyCart;
+            return View(addressVM);
+        }
+        public IActionResult AdressSelect(Guid id)
+        {
+            if (id != null)
+            {
+                var adress = userAdressService.SetAdress(id);
+            }
+            return Json(new { success = true, Message ="Adres seçildi " });
         }
         public IActionResult SignedIn()
         {
@@ -155,6 +188,39 @@ namespace MVC.Controllers
                 return Redirect("/Member/Account/Login");
             }
             
+        }
+        public async Task<IActionResult> Shipment(Guid id)
+        {
+            AddressVM addressVM = new AddressVM();
+            if (signInManager.IsSignedIn(User))
+            {
+                AppUser appUser = await userManager.GetUserAsync(User);
+                if (appUser != null)
+                {
+                    //shipment
+                    var shipment = shipperService.GetActive();
+                    List<Shipper> shipperList = new List<Shipper>();
+                    foreach (var item in shipment)
+                    {
+                        shipperList.Add(item);
+                    }
+                    addressVM.Shippers = shipperList;
+                }
+            }
+                    
+            return View(addressVM);
+
+        }
+        public IActionResult ShipmentSelect(Guid id)
+        {
+
+            var shipment = shipperService.GetById(id);
+            Cart cart = SessionHelper.GetProductFromJson<Cart>(HttpContext.Session, "cart");
+            cart.ShipperId = shipment.ID;
+            SessionHelper.SetProductJson(HttpContext.Session, "cart", cart);
+            return Json(new { success = true });
+
+
         }
 
     }

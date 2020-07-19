@@ -1,0 +1,68 @@
+﻿@model UserAdress
+@{
+    ViewData["Title"] = "DeliveryAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="container">
+        <div class="card-body">
+            <h4 class="card-title mb-4">Teslimat Adresi</h4>
+            <form asp-action="DeliveryAdd" asp-controller="Cart" method="post" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="col form-group">
+                        <label asp-for="AdressName"></label>
+                        <input asp-for="AdressName" type="text" class="form-control" placeholder="Adres Başlığı">
+                    </div> <!-- form-group end.// -->
+                    <div class="col form-group">
+                        <label asp-for="TCNo"></label>
+                        <input asp-for="TCNo" type="text" class="form-control" placeholder="TC Kimlik No">
+                    </div> <!-- form-group end.// -->
+                </div> <!-- form-row end.// -->
+                <div class="form-row">
+                    <div class="col form-group">
+                        <label asp-for="FirstName"></label>
+                        <input asp-for="FirstName" type="text" class="form-control" placeholder="Adınızı giriniz">
+                    </div> <!-- form-group end.// -->
+                    <div class="col form-group">
+                        <label asp-for="LastName"></label>
+                        <input asp-for="LastName" type="text" class="form-control" placeholder="Soyadınızı giriniz">
+                    </div> <!-- form-group end.// -->
+                </div> <!-- form-row end.// -->
+
+                <div class="form-row">
+                    <div class="col form-group">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" type="text" class="form-control" placeholder="Email adresinizi giriniz">
+                    </div> <!-- form-group end.// -->
+                    <div class="col form-group">
+                        <label asp-for="Phone"></label>
+                        <input asp-for="Phone" type="text" class="form-control" placeholder="Telefon numaranızı giriniz">
+                    </div> <!-- form-group end.// -->
+                </div> <!-- form-row end.// -->
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="City"></label>
+                        <input asp-for="City" type="text" class="form-control" placeholder="Şehir bilgisini giriniz">
+                    </div> <!-- form-group end.// -->
+
+                    <div class="form-group col-md-6">
+                        <label asp-for="Town"></label>
+                        <input asp-for="Town" type="text" class="form-control" placeholder="İlçe bilgisini giriniz">
+                    </div> <!-- form-group end.// -->
+                </div> <!-- form-row.// -->
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="FullAdress"></label>
+                        <input asp-for="FullAdress" type="text" class="form-control" placeholder="Adres tanımı yapınız">
+                    </div> <!-- form-group end.// -->
+                </div> <!-- form-row.// -->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> Devam Et  </button>
+                </div> <!-- form-group// -->
+            </form>
+        </div>
+    </div>
+</div>
+    
+

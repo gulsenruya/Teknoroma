@@ -11,6 +11,9 @@ namespace BLL.Abstract
         List<UserAdress> GetAll();
         List<UserAdress> GetActive();
         UserAdress GetById(Guid id);
+        List<UserAdress> GetByIdUser(Guid id);
+        UserAdress SetAdress(Guid id);
+        UserAdress GetAdress(Guid id);
         void Update(UserAdress userAdress);
         void Remove(Guid id);
         void Remove(UserAdress userAdress);

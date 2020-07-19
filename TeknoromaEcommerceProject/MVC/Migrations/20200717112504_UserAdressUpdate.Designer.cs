@@ -4,14 +4,16 @@ using DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MVC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200717112504_UserAdressUpdate")]
+    partial class UserAdressUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -289,9 +291,6 @@ namespace MVC.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AdressId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("AppUserID")
                         .HasColumnType("uniqueidentifier");
 
@@ -340,16 +339,11 @@ namespace MVC.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("UserAdressID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("ID");
 
                     b.HasIndex("AppUserID");
 
                     b.HasIndex("ShipperId");
-
-                    b.HasIndex("UserAdressID");
 
                     b.ToTable("Orders");
                 });
@@ -691,14 +685,9 @@ namespace MVC.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("UserAdressID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("ID");
 
                     b.HasIndex("AppUserId");
-
-                    b.HasIndex("UserAdressID");
 
                     b.ToTable("UserAdresses");
                 });
@@ -817,10 +806,6 @@ namespace MVC.Migrations
                         .HasForeignKey("ShipperId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("DAL.Entity.UserAdress", "UserAdress")
-                        .WithMany()
-                        .HasForeignKey("UserAdressID");
                 });
 
             modelBuilder.Entity("DAL.Entity.OrderDetail", b =>
@@ -862,10 +847,6 @@ namespace MVC.Migrations
                         .HasForeignKey("AppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("DAL.Entity.UserAdress", null)
-                        .WithMany("setAdresses")
-                        .HasForeignKey("UserAdressID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>

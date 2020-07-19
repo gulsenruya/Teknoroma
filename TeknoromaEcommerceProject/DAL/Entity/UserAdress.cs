@@ -8,12 +8,18 @@ namespace DAL.Entity
 {
     public class UserAdress: CoreEntity
     {
+        [Required(ErrorMessage = "Adres başlığı girilmesi zorunludur")]
+        [Display(Name = "Adres Başlığı")]        
+        public string AdressName { get; set; }
         [Required(ErrorMessage = "Ad girilmesi zorunludur")]
-        [Display(Name = "Adınız")]
+        [Display(Name = "Ad")]
         public string FirstName { get; set; }
         [Required(ErrorMessage = "Soyad girilmesi zorunludur")]
         [Display(Name = "Soyadınız")]
         public string LastName { get; set; }
+        [Required(ErrorMessage = "TC kimlik numarası girilmesi zorunludur")]
+        [Display(Name = "TC Kimlik No")]
+        public string TCNo { get; set; }
         [Required(ErrorMessage = "Email girilmesi zorunludur")]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -28,7 +34,8 @@ namespace DAL.Entity
         public string Town { get; set; }
         [Required(ErrorMessage = "Adres girilmesi zorunludur")]
         [Display(Name = "Adres")]
-        public string FullAdress { get; set; }        
+        public string FullAdress { get; set; }
+        public List<UserAdress> setAdresses { get; set; }
         public Guid AppUserId { get; set; }
         public virtual AppUser AppUser { get; set; }
     }

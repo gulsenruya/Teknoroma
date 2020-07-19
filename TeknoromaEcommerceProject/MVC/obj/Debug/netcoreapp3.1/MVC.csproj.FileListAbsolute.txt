@@ -518,3 +518,5 @@ C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\MVC\obj\Debug\n
 C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\MVC\obj\Debug\netcoreapp3.1\MVC.csproj.CopyComplete
 C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\MVC\obj\Debug\netcoreapp3.1\MVC.dll
 C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\MVC\obj\Debug\netcoreapp3.1\MVC.pdb
+C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\MVC\obj\Debug\netcoreapp3.1\Razor\Views\Cart\DeliveryAdd.cshtml.g.cs
+C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\MVC\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Shipment.cshtml.g.cs

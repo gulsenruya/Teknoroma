@@ -26,6 +26,11 @@ namespace BLL.Service
             return context.UserAdresses.Where(x => x.Status == DAL.Entity.Enum.Status.Active).ToList();
         }
 
+        public UserAdress GetAdress(Guid id)
+        {
+            return context.UserAdresses.Where(x => x.AppUserId == id).FirstOrDefault();
+        }
+
         public List<UserAdress> GetAll()
         {
             return context.UserAdresses.ToList();
@@ -34,6 +39,11 @@ namespace BLL.Service
         public UserAdress GetById(Guid id)
         {
             return context.UserAdresses.Find(id);
+        }
+
+        public List<UserAdress> GetByIdUser(Guid id)
+        {
+            return context.UserAdresses.Where(x => x.AppUserId == id && x.Status == DAL.Entity.Enum.Status.Active).ToList();
         }
 
         public void Remove(Guid id)
@@ -47,6 +57,17 @@ namespace BLL.Service
         {
             userAdress.Status = DAL.Entity.Enum.Status.Deleted;
             Update(userAdress);
+        }
+
+        public UserAdress SetAdress(Guid id)
+        {
+            var userAdress = GetById(id);
+            List<UserAdress> userAdresses = GetByIdUser(userAdress.AppUserId);
+            foreach (var item in userAdresses)
+            {
+                item.setAdresses = userAdresses;
+            }
+            return userAdress;
         }
 
         public void Update(UserAdress userAdress)
