@@ -10,8 +10,9 @@ namespace BLL.Abstract
         void Add(Order order);
         List<Order> GetOrders();
         List<Order> GetActive();
-        void Update(Order order);        
-        
-        
+        void Update(Order order);
+        Order GetById(Guid id);
+        List<OrderDetail> GetOrderDetails(Guid id);
+
     }
 }

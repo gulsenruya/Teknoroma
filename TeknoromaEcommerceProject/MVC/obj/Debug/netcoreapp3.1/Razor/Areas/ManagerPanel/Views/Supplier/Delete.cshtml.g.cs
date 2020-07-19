@@ -19,8 +19,22 @@ using DAL.Entity;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\MVC\Areas\ManagerPanel\Views\_ViewImports.cshtml"
+using MVC.Models.ViewModel;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\MVC\Areas\ManagerPanel\Views\_ViewImports.cshtml"
+using MVC.Models;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3fb85d29bae28ac318b69b12bdf095000d95874c", @"/Areas/ManagerPanel/Views/Supplier/Delete.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0e86f24f08706bd4846be54eb5b153f555bea861", @"/Areas/ManagerPanel/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"afcbc5265eabcf33d2f93a9a180f18dd7777044b", @"/Areas/ManagerPanel/Views/_ViewImports.cshtml")]
     public class Areas_ManagerPanel_Views_Supplier_Delete : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Supplier>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Index", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -75,7 +89,7 @@ using DAL.Entity;
                         </div>
                         <div class=""col-sm-6"">
                             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3fb85d29bae28ac318b69b12bdf095000d95874c6014", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3fb85d29bae28ac318b69b12bdf095000d95874c6450", async() => {
                 WriteLiteral("Tedarikçi Listesi");
             }
             );
@@ -94,7 +108,7 @@ using DAL.Entity;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"card-body\">\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3fb85d29bae28ac318b69b12bdf095000d95874c7638", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3fb85d29bae28ac318b69b12bdf095000d95874c8074", async() => {
                 WriteLiteral("\r\n                    <p>");
 #nullable restore
 #line 23 "C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\MVC\Areas\ManagerPanel\Views\Supplier\Delete.cshtml"
@@ -104,7 +118,7 @@ using DAL.Entity;
 #line hidden
 #nullable disable
                 WriteLiteral(" Tedarikçini silmek istediğinize emin misiniz ?</p>\r\n                    <button type=\"submit\" class=\"btn btn-danger\">Tedarikçi Sil</button>\r\n                    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3fb85d29bae28ac318b69b12bdf095000d95874c8367", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3fb85d29bae28ac318b69b12bdf095000d95874c8803", async() => {
                     WriteLiteral("Iptal");
                 }
                 );

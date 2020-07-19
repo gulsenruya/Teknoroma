@@ -19,8 +19,22 @@ using DAL.Entity;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\MVC\Areas\ManagerPanel\Views\_ViewImports.cshtml"
+using MVC.Models.ViewModel;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\MVC\Areas\ManagerPanel\Views\_ViewImports.cshtml"
+using MVC.Models;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3dcb71c1bb35698c18670ccb0ee25196f31ca766", @"/Areas/ManagerPanel/Views/Home/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0e86f24f08706bd4846be54eb5b153f555bea861", @"/Areas/ManagerPanel/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"afcbc5265eabcf33d2f93a9a180f18dd7777044b", @"/Areas/ManagerPanel/Views/_ViewImports.cshtml")]
     public class Areas_ManagerPanel_Views_Home_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

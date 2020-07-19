@@ -26,7 +26,16 @@ namespace BLL.Service
         {
             return appDbContext.Orders.Where(x => x.Status == DAL.Entity.Enum.Status.Active).ToList();
         }
-               
+
+        public Order GetById(Guid id)
+        {
+            return appDbContext.Orders.Find(id);
+        }
+
+        public List<OrderDetail> GetOrderDetails(Guid id)
+        {
+            return appDbContext.OrderDetail.Where(x => x.OrderId == id).ToList();
+        }
 
         public List<Order> GetOrders()
         {

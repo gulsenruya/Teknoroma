@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BLL.Abstract;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MVC.Areas.ManagerPanel.Models;
 
 namespace MVC.Areas.ManagerPanel.Controllers
 {
@@ -12,9 +13,13 @@ namespace MVC.Areas.ManagerPanel.Controllers
     public class OrderController : Controller
     {
         private readonly IOrderService orderService;
-        public OrderController(IOrderService orderService)
+        private readonly IUserAdressService userAdressService;
+        private readonly IProductService productService;
+        public OrderController(IOrderService orderService,IUserAdressService userAdressService,IProductService productService)
         {
             this.orderService = orderService;
+            this.userAdressService = userAdressService;
+            this.productService = productService;
         }
         // GET: Order
         public ActionResult Index()
@@ -23,9 +28,18 @@ namespace MVC.Areas.ManagerPanel.Controllers
         }
 
         // GET: Order/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
-            return View();
+            OrderVM orderVM = new OrderVM();
+            orderVM.Order = orderService.GetById(id);
+            orderVM.OrderDetails = orderService.GetOrderDetails(id);
+            orderVM.UserAdress = userAdressService.GetById(orderVM.Order.ID);
+            foreach (var item in orderVM.OrderDetails)
+            {
+                var products = productService.GetById(item.ProductId);
+                item.Products = products;
+            }
+            return View(orderVM);
         }
 
         // GET: Order/Create
