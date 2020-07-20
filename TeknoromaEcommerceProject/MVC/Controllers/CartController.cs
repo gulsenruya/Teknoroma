@@ -51,6 +51,7 @@ namespace MVC.Controllers
         {
             Cart cartSession = SessionHelper.GetProductFromJson<Cart>(HttpContext.Session, "cart") == null ? new Cart() : SessionHelper.GetProductFromJson<Cart>(HttpContext.Session, "cart");
             var product = productService.GetById(id);
+            
             CartItem cartItem = new CartItem();
             cartItem.ID = product.ID;
             cartItem.Name = product.ProductName;
@@ -112,6 +113,8 @@ namespace MVC.Controllers
                     orderDetail.Products = product;
                     orderDetail.UnitPrice = item.Price;
                     order.OrderDetails.Add(orderDetail);
+                    //stoktan düşme
+                    product.UnitsInStock -= item.Quantity;
                 }
             }
             
@@ -119,7 +122,7 @@ namespace MVC.Controllers
             int rndMasterId = rnd.Next(000000001, 999999999);
             order.MasterId = rndMasterId;            
             orderService.Add(order);
-            
+           
             foreach (var item in cartSession.MyCart)
             {
                 var product = productService.GetById(item.ID);
