@@ -8,30 +8,30 @@
     decimal? total = 0;
 }
 
-@if (TempData["ErrorCart"]!=null)
+@if (TempData["ErrorCart"] != null)
 {
     <div class="container">
         <div class="row">
-            
-            <aside class="col-lg-9">
-                
-                    <div class="main-content-box checkout-empty-cart-box">
-                        <div class="icon">
-                            <i class="icon-sm rounded-circle border fa fa-shopping-cart"></i>
-                            <span class="notify">0</span>
-                        </div>
-                        
-                        <div class="empty-card-button">
-                            <a asp-action="Index" asp-controller="Home" class="button button-block button-bold button--primary">Alışverişe Devam Et</a>
 
-                        </div>
-                  
+            <aside class="col-lg-9">
+
+                <div class="main-content-box checkout-empty-cart-box">
+                    <div class="icon">
+                        <i class="icon-sm rounded-circle border fa fa-shopping-cart"></i>
+                        <span class="notify">0</span>
+                    </div>
+
+                    <div class="empty-card-button">
+                        <a asp-action="Index" asp-controller="Home" class="button button-block button-bold button--primary">Alışverişe Devam Et</a>
+
+                    </div>
+
                 </div>
             </aside>
 
         </div>
     </div>
-    
+
 }
 else
 {
@@ -52,45 +52,43 @@ else
                             @foreach (var item in Model)
                             {
                                 total += item.SubTotal;
-                            <tr>
-                                <td>
-                                    <figure class="itemside align-items-center">
-                                        <div class="aside">
-                                            @if (item.ImagePath != null)
-                                            {
-                                                <img src="~/images/products/@item.ImagePath" class="img-sm">
-                                            }
-                                            else
-                                            {
-                                                <img src="~/images/product/nologo.png" class="img-sm">
-                                            }
+                                <tr>
+                                    <td>
+                                        <figure class="itemside align-items-center">
+                                            <div class="aside">
+                                                @if (item.ImagePath != null)
+                                                {
+                                                    <img src="~/images/products/@item.ImagePath" class="img-sm">
+                                                }
+                                                else
+                                                {
+                                                    <img src="~/images/product/nologo.png" class="img-sm">
+                                                }
+                                            </div>
+                                            <figcaption class="info">
+                                                <a href="#" class="title text-dark">@item.Name</a>
+                                            </figcaption>
+                                        </figure>
+                                    </td>
+                                    <td>
+                                        <div class="input-group input-spinner">
+                                            <div >                                                
+                                                <button type="button" id="sub" class="sub">-</button>
+                                                <input type="number" id="1" value="@item.Quantity" min="1" max="99" />
+                                                <button type="button" id="add" class="add">+</button>
+                                            </div>
                                         </div>
-                                        <figcaption class="info">
-                                            <a href="#" class="title text-dark">@item.Name</a>
-                                        </figcaption>
-                                    </figure>
-                                </td>  
-                                <td>
-                                    <div class="input-group input-spinner">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-light" type="button" id="button-plus"> + </button>
-                                        </div>
-                                        <input type="text" class="form-control" value="1">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-light" type="button" id="button-minus"> − </button>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="price-wrap">
-                                        <var class="price">@item.Price</var>
-                                    </div> <!-- price-wrap .// -->
-                                </td>
-                                <td class="text-right">                                   
-                                    <a asp-action="Delete" asp-controller="Cart" asp-route-id="@item.ID" class="btn btn-light"> <i class="fa fa-trash"></i> </a>
+                                    </td>
+                                    <td>
+                                        <div class="price-wrap">
+                                            <var class="price" id="total">@item.Price</var>
+                                        </div> <!-- price-wrap .// -->
+                                    </td>
+                                    <td class="text-right">
+                                        <a asp-action="Delete" asp-controller="Cart" asp-route-id="@item.ID" class="btn btn-light"> <i class="fa fa-trash"></i> </a>
 
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
@@ -117,7 +115,7 @@ else
                         }
                         else
                         {
-                    <a asp-action="SignedIn" asp-controller="Cart" class="btn btn-primary btn-block">Alışverişi Tamamla </a>
+                            <a asp-action="SignedIn" asp-controller="Cart" class="btn btn-primary btn-block">Alışverişi Tamamla </a>
                         }
                         <a asp-action="Index" asp-controller="Home" class="btn btn-light btn-block">Alışverişe Devam Et</a>
                     </div> <!-- card-body.// -->
@@ -130,5 +128,24 @@ else
     </div>
 
 }
+@section scripts{
+    <script>
+        $('.add').click(function () {
+            if ($(this).prev().val() < 3) {
+                $(this).prev().val(+$(this).prev().val() + 1);
+            }
+        });
+		
+       
+        $('.sub').click(function () {
+            if ($(this).next().val() > 1) {
+                if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
+            }
+        });
+    </script>
+
+
+}
+
 
 

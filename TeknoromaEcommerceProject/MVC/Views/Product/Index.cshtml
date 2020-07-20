@@ -27,24 +27,27 @@
                     <article class="content-body">
 
                         <h2 class="title">@Model.Product.ProductName</h2>
+                        <small class="label-rating text-success"> <i class="fa fa-clipboard-check">Stok Adeti :</i>@Model.Product.UnitsInStock </small>
                         <div class="mb-3">
                             <var class="price h4">@Model.Product.Price ₺</var>
-                            <span class="text-muted"> 1 Adet</span>
+                            
                         </div>
                         <hr>
                         <div class="form-row">
                             <div class="form-group col-md flex-grow-0">
                                 <label>Adet</label>
-                                <div class="input-group mb-3 input-spinner">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-light" type="button" id="button-plus"> + </button>
+                                <div class="sp-quantity">
+                                    <div class="sp-minus fff">
+                                        <a class="ddd" href="#">-</a>
                                     </div>
-                                    <input type="text" class="form-control" value="1">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-light" type="button" id="button-minus"> &minus; </button>
+                                    <div class="sp-input">
+                                        <input type="text" id="product" class="quntity-input" value="1" />
+                                    </div>
+                                    <div class="sp-plus fff">
+                                        <a class="ddd" href="#">+</a>
                                     </div>
                                 </div>
-                            </div>                           
+                            </div>
                         </div> <!-- row.// -->
 
                         <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model.Product.ID" class="btn btn-outline-primary"> <span class="text">Sepete Ekle</span> <i class="fas fa-shopping-cart"></i>  </a>
@@ -65,7 +68,23 @@
                 url: path                
         });
      });
+    $(".ddd").on("click", function () {
 
+    var $button = $(this);
+    var oldValue = $button.closest('.sp-quantity').find("input.quntity-input").val();
+
+    if ($button.text() == "+") {
+        var newVal = parseFloat(oldValue) + 1;
+    } else {
+        // Don't allow decrementing below zero
+        if (oldValue > 0) {
+            var newVal = parseFloat(oldValue) - 1;
+        } else {
+            newVal = 0;
+        }
+        } $button.closest('.sp-quantity').find("input.quntity-input").val(newVal);
+        $('product').val()== newVal;
+});
   
     </script>
 }
