@@ -33,7 +33,7 @@ namespace MVC.Areas.ManagerPanel.Controllers
             OrderVM orderVM = new OrderVM();
             orderVM.Order = orderService.GetById(id);
             orderVM.OrderDetails = orderService.GetOrderDetails(id);
-            orderVM.UserAdress = userAdressService.GetById(orderVM.Order.ID);
+            orderVM.UserAdress = userAdressService.GetById(orderVM.Order.UserAdressId);
             foreach (var item in orderVM.OrderDetails)
             {
                 var products = productService.GetById(item.ProductId);
@@ -88,27 +88,24 @@ namespace MVC.Areas.ManagerPanel.Controllers
             }
         }
 
-        // GET: Order/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Order/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(Guid id)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
+                orderService.Delete(id);
+                return RedirectToAction("Index");
             }
             catch
             {
                 return View();
             }
+        }
+        public IActionResult Confirm(Guid id)
+        {
+            var order = orderService.GetById(id);
+            order.Confirmed = true;
+            orderService.Update(order);
+            return RedirectToAction("Index");
         }
     }
 }

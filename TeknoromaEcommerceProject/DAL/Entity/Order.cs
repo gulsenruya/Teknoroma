@@ -19,7 +19,7 @@ namespace DAL.Entity
         public virtual List<OrderDetail> OrderDetails { get; set; }
         public Guid ShipperId { get; set; }
         public virtual Shipper  Shipper{ get; set; }
-        public Guid AdressId { get; set; }
+        public Guid UserAdressId { get; set; }
         public virtual UserAdress UserAdress { get; set; }
 
     }

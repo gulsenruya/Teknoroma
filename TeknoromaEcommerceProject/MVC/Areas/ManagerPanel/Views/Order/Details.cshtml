@@ -1,7 +1,11 @@
 ﻿@model MVC.Areas.ManagerPanel.Models.OrderVM
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<AppUser> userManager
+@inject BLL.Abstract.IShipperService shipperService;
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Areas/ManagerPanel/Views/Shared/_ManagerLayout.cshtml";
+
 }
 
 <div class="row">
@@ -14,12 +18,58 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="card-body">
-        <div class="col-lg-12">
+            <div class="card-body">
+                <div class="card-body">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Sipariş ID</th>
+                                <th>Sipariş Onay Durumu</th>
+                                <th>Sipariş Tarihi</th>
+                                <th>Email</th>
+                                <th>Adres</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Model.Order.MasterId</td>
+                                @if (Model.Order.Confirmed == true)
+                                {
+                                    <td>Sipariş durumu : onaylandı</td>
+                                }
+                                else
+                                {
+                                    <td>Sipariş durumu : Onay bekliyor</td>
 
+                                }
+                            <td>@Model.Order.CreatedDate</td>
+
+                            <td>Email:@userManager.FindByIdAsync(Model.Order.AppUserID.ToString()).Result.Email</td>
+                            @if (Model.UserAdress != null)
+                            {
+                                <td>
+                                    <table>
+                                        <tr><td>Adres Adı: @Model.UserAdress.AdressName</td></tr>
+                                        <tr><td>Adı: @Model.UserAdress.FirstName</td></tr>
+                                        <tr><td>Soyadı: @Model.UserAdress.LastName</td></tr>
+                                        <tr><td>TC No: @Model.UserAdress.TCNo</td></tr>
+                                        <tr><td>Email: @Model.UserAdress.Email</td></tr>
+                                        <tr><td>Telefon: @Model.UserAdress.Phone</td></tr>
+                                        <tr><td>Ülke: @Model.UserAdress.City</td></tr>
+                                        <tr><td>Şehir: @Model.UserAdress.Town</td></tr>
+                                        <tr><td>Açık Adres: @Model.UserAdress.FullAdress</td></tr>
+                                    </table>
+                                </td>
+                                
+                            }
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
+    
 </div>
 

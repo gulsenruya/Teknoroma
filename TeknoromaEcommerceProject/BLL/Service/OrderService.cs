@@ -22,6 +22,17 @@ namespace BLL.Service
             appDbContext.SaveChanges();
         }
 
+        public void Delete(Guid id)
+        {
+            var order = GetById(id);
+            order.Status = DAL.Entity.Enum.Status.Deleted;
+            List<OrderDetail> orderDetails = new List<OrderDetail>();
+            foreach (var item in orderDetails)
+            {
+                item.Status = DAL.Entity.Enum.Status.Deleted;
+            }
+        }
+
         public List<Order> GetActive()
         {
             return appDbContext.Orders.Where(x => x.Status == DAL.Entity.Enum.Status.Active).ToList();

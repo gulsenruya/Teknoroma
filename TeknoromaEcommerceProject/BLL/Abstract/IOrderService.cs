@@ -13,6 +13,7 @@ namespace BLL.Abstract
         void Update(Order order);
         Order GetById(Guid id);
         List<OrderDetail> GetOrderDetails(Guid id);
+        void Delete(Guid id);
 
     }
 }

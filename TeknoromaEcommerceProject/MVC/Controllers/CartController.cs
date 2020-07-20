@@ -97,7 +97,7 @@ namespace MVC.Controllers
                 order.AppUser = user;
                 order.Confirmed = false;
                 order.ShipperId = cartSession.ShipperId;
-                order.AdressId = userAdress.ID;
+                order.UserAdressId = userAdress.ID;
             }
             else
             {

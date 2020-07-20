@@ -50,7 +50,7 @@
                                     <td>@item.MasterId</td>
                                     <td>@userManager.FindByIdAsync(item.AppUserID.ToString()).Result.UserName</td>
                                     <td>@userManager.FindByIdAsync(item.AppUserID.ToString()).Result.Email</td>
-                                    <td>@item.OrderDate</td>
+                                    <td>@item.CreatedDate</td>
                                     @switch (item.Confirmed)
                                     {
                                         case false:
@@ -61,7 +61,7 @@
                                             break;
                                     }
                                     <td>
-                                        <a asp-action="Detail" asp-controller="Order" asp-area="ManagerPanel" asp-route-id="@item.ID" class="btn btn-info">Sipariş Detayı</a>
+                                        <a asp-action="Details" asp-controller="Order" asp-area="ManagerPanel" asp-route-id="@item.ID" class="btn btn-info">Sipariş Detayı</a>
                                         <a asp-action="Confirm" asp-controller="Order" asp-area="ManagerPanel" asp-route-id="@item.ID" class="btn btn-success">Siparişi Onayla</a>
                                         <a asp-action="Delete" asp-controller="Order" asp-area="ManagerPanel" asp-route-id="@item.ID" class="btn btn-danger">Siparişi Sil</a>
                                     </td>
