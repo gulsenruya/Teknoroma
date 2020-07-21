@@ -27,30 +27,42 @@
                     <article class="content-body">
 
                         <h2 class="title">@Model.Product.ProductName</h2>
-                        <small class="label-rating text-success"> <i class="fa fa-clipboard-check">Stok Adeti :</i>@Model.Product.UnitsInStock </small>
+                        @if (Model.Product.UnitsInStock > 0)
+                        {
+                            <small class="label-rating text-success"> <i class="fa fa-clipboard-check">Stok Adeti :</i>@Model.Product.UnitsInStock </small>
+                        }
+                        else
+                        {
+                            <h3>Stokta bulunmamaktadır </h3>
+                        }
+
                         <div class="mb-3">
                             <var class="price h4">@Model.Product.Price ₺</var>
-                            
+
                         </div>
                         <hr>
-                        <div class="form-row">
-                            <div class="form-group col-md flex-grow-0">
-                                <label>Adet</label>
-                                <div class="sp-quantity">
-                                    <div class="sp-minus fff">
-                                        <a class="ddd" href="#">-</a>
-                                    </div>
-                                    <div class="sp-input">
-                                        <input type="text" id="product" class="quntity-input" value="1" />
-                                    </div>
-                                    <div class="sp-plus fff">
-                                        <a class="ddd" href="#">+</a>
+
+                        @if (Model.Product.UnitsInStock > 0)
+                        {
+                            <div class="form-row">
+                                <div class="form-group col-md flex-grow-0">
+                                    <label>Adet</label>
+                                    <div class="sp-quantity">
+                                        <div class="sp-minus fff">
+                                            <a class="ddd" href="#">-</a>
+                                        </div>
+                                        <div class="sp-input">
+                                            <input type="text" id="product" class="quntity-input" value="1" />
+                                        </div>
+                                        <div class="sp-plus fff">
+                                            <a class="ddd" href="#">+</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div> <!-- row.// -->
+                            </div> <!-- row.// -->
+                            <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model.Product.ID" class="btn btn-outline-primary"> <span class="text">Sepete Ekle</span> <i class="fas fa-shopping-cart"></i>  </a>
+                        }
 
-                        <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model.Product.ID" class="btn btn-outline-primary"> <span class="text">Sepete Ekle</span> <i class="fas fa-shopping-cart"></i>  </a>
                     </article> <!-- product-info-aside .// -->
                 </main> <!-- col.// -->
             </div> <!-- row.// -->

@@ -43,6 +43,11 @@ namespace BLL.Service
             return appDbContext.Orders.Find(id);
         }
 
+        public List<Order> GetByIdUser(Guid id)
+        {
+            return appDbContext.Orders.Where(x => x.AppUserID == id && x.Status == DAL.Entity.Enum.Status.Active).ToList();
+        }
+
         public List<OrderDetail> GetOrderDetails(Guid id)
         {
             return appDbContext.OrderDetail.Where(x => x.OrderId == id).ToList();
@@ -51,7 +56,9 @@ namespace BLL.Service
         public List<Order> GetOrders()
         {
             return appDbContext.Orders.ToList();
-        }       
+        }
+
+       
 
         public void Update(Order order)
         {
