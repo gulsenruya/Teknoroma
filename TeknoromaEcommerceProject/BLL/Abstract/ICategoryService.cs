@@ -15,6 +15,7 @@ namespace BLL.Abstract
         void Remove(Guid id);
         void RemoveAll(Expression<Func<Category, bool>> exp);
         Category GetById(Guid id);
+        List<Product> GetByCategoriesProducts(Guid id);
         Category GetByDefault(Expression<Func<Category, bool>> exp);
         List<Category> GetActive();
         List<Category> GetDefault(Expression<Func<Category, bool>> exp);

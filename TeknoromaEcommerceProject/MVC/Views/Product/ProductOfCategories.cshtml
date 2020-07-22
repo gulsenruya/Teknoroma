@@ -1,6 +1,6 @@
 ﻿@model ProductVM
 @{
-    ViewData["Title"] = "AllProducts";
+    ViewData["Title"] = "ProductOfCategories";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,6 +11,7 @@
 
             <main class="col-md-9">
                 <!-- ============================ COMPONENT 1  ================================= -->
+            
                 @foreach (var product in Model.Products)
                 {
                     <article class="card card-product-list">
@@ -58,7 +59,7 @@
             <aside class="col-md-3">
                 <!-- COMPONENTS SIDEBAR -->
                 <output>
-                    <div class="card">
+                    @*<div class="card">
                         <article class="filter-group">
                             <header class="card-header">
                                 <a href="#" data-toggle="collapse" data-target="#collapse_aside1">
@@ -69,27 +70,22 @@
                             <div class="filter-content collapse show" id="collapse_aside1">
                                 <div class="card-body">
                                     <ul class="list-menu">
-
-                                        @foreach (var item in Model.Categories)
+                                        @foreach (var item in Model.Products)
                                         {
-                                            
-                                                <li>
-                                                    <a asp-action="ProductOfCategories" asp-controller="Product" class="button button-block button-bold button--primary" asp-route-id="@item.ID">
-                                                        @Model.Categories.Where(x => x.ID == item.ID && ).FirstOrDefault().CategoryName
-                                                    </a>
-                                                </li>
-                                            
-                                            }
+                                            <li>
+                                                <a asp-action="ProductOfCategories" asp-controller="Product" class="button button-block button-bold button--primary" asp-route-id="@item.ID">
+                                                    @Model.Categories.Where(x => x.ID == item.CategoryId).FirstOrDefault().CategoryName
+                                                </a>
+                                            </li>
                                         }
-
 
                                     </ul>
 
-                                </div> <!-- card-body.// -->
+                                </div>  card-body.// 
                             </div>
-                        </article> <!-- filter-group  .// -->
-                        <!-- filter-group  .// -->
-                    </div> <!-- card.// -->
+                        </article>  filter-group  .// 
+                         filter-group  .// 
+                    </div>*@ <!-- card.// -->
                 </output>
                 <!-- COMPONENTS SIDEBAR END .// -->
             </aside>
@@ -99,6 +95,7 @@
 
     </div> <!-- container .//  -->
 </section>
+
 
 @section scripts{
     <script>

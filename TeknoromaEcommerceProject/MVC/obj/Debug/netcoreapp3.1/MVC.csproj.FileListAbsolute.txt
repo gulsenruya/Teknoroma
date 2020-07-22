@@ -534,3 +534,4 @@ C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\MVC\bin\Debug\n
 C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\MVC\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Drawing.Common.dll
 C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\MVC\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Drawing.Common.dll
 C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\MVC\obj\Debug\netcoreapp3.1\MVC.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\gulsen\Source\Repos\Teknoroma\TeknoromaEcommerceProject\MVC\obj\Debug\netcoreapp3.1\Razor\Views\Product\ProductOfCategories.cshtml.g.cs

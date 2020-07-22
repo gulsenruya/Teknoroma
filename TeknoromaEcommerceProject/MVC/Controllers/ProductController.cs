@@ -35,18 +35,18 @@ namespace MVC.Controllers
             
             return View(productVM);
         }
-        //public IActionResult ProductOfCategories(Guid id)
-        ////{
-        ////    ProductVM productVM = new ProductVM();
-        ////    productVM.Categories = categoryService.GetCategories(id);
+        public IActionResult ProductOfCategories(Guid id)
+        {
+            ProductVM productVM = new ProductVM();
+            productVM.Products = categoryService.GetByCategoriesProducts(id);
 
-        ////    foreach (var item in productVM.Categories)
-        ////    {
-        ////        var products = productService.GetById(item.ID);
-        ////        item. = products;
-        ////    }
-        ////    return View(productVM.Category);
+            //foreach (var item in productVM.Categories)
+            //{
+            //    var products = productService.GetById(item.ID);
+            //    item. = products;
+            //}
+            return View(productVM);
 
-        //}
-    }
+        }
+}
 }

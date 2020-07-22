@@ -92,5 +92,10 @@ namespace BLL.Service
         {
             return context.Categories.Where(x => x.ID == id).ToList();
         }
+
+        public List<Product> GetByCategoriesProducts(Guid id)
+        {
+            return context.Products.Where(x => x.CategoryId == id).ToList();
+        }
     }
 }
