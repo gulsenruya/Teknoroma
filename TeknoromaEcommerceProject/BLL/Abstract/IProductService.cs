@@ -8,6 +8,8 @@ namespace BLL.Abstract
 {
     public interface  IProductService
     {
+        string ContentRootPath { get; }
+
         void Add(Product product);
         void Add(List<Product> products);
         void Update(Product Product);

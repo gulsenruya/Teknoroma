@@ -1,4 +1,4 @@
-﻿@model List<Product>
+﻿@model ProductVM
 @{
     ViewData["Title"] = "AllProducts";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,7 +11,7 @@
 
             <main class="col-md-9">
                 <!-- ============================ COMPONENT 1  ================================= -->
-                @foreach (var product in Model)
+                @foreach (var product in Model.Products)
                 {
                     <article class="card card-product-list">
                         <div class="card-body">
@@ -69,11 +69,15 @@
                             <div class="filter-content collapse show" id="collapse_aside1">
                                 <div class="card-body">
                                     <ul class="list-menu">
-                                        <li><a href="#">Electronics </a></li>
-                                        <li><a href="#">Watches  </a></li>
-                                        <li><a href="#">Cinema </a></li>
-                                        <li><a href="#">Clothes </a></li>
-                                        <li><a href="#">Home items </a></li>
+                                        @foreach (var item in Model.Products)
+                                        {
+                                            <li>
+                                                <a asp-action="ProductOfCategories" asp-controller="Product" class="button button-block button-bold button--primary" asp-route-id="@item.ID">
+                                                    @Model.Categories.Where(x => x.ID == item.CategoryId).FirstOrDefault().CategoryName
+                                                                                            </a>
+</li>
+                                        }                                       
+
                                     </ul>
 
                                 </div> <!-- card-body.// -->

@@ -19,6 +19,7 @@ namespace BLL.Abstract
         List<Category> GetActive();
         List<Category> GetDefault(Expression<Func<Category, bool>> exp);
         List<Category> GetAll();
+        List<Category> GetCategories(Guid id);
         bool Any(Expression<Func<Category, bool>> exp);
     }
 }

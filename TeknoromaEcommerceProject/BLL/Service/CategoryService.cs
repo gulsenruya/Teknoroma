@@ -87,5 +87,10 @@ namespace BLL.Service
             context.Entry(category).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             context.SaveChanges();
         }
+
+        public List<Category> GetCategories(Guid id)
+        {
+            return context.Categories.Where(x => x.ID == id).ToList();
+        }
     }
 }

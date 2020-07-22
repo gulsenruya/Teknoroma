@@ -13,6 +13,8 @@ namespace BLL.Service
     {
         private readonly AppDbContext context;
 
+        public string ContentRootPath => throw new NotImplementedException();
+
         //Context
         public ProductService(AppDbContext context)
         {

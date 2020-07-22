@@ -14,10 +14,18 @@
                 <div class="col-sm-6">
                     <a asp-action="Create" asp-controller="Product" class="btn btn-success float-md-right">Ürün Ekle</a>
                 </div>
+                <form method="post">
+                    <div class="col-sm-6">
+                        <a asp-action="GeneratePdf" asp-controller="Product" class="btn btn-success float-md-right">Ürün Ekle</a>action
+                        @*<button id="btnPdf">PDF olarak al</button>*@
+                    </div>
+                </form>
+                
+               
             </div>
         </div>
     </div>
-    <div class="card-body">
+    <div id="pdfContainer" class="card-body">
         <table class="table table-bordered table-hover" id="product">
             <thead>
                 <tr>
@@ -63,12 +71,18 @@
     </div>
 </div>
     </div>
-@section scripts{
-    <script>
-    $(function () {
-        $("#product").DataTable();
-    })
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#product").DataTable();
+        });
+        $("#btnPdf").click(function () {
+            
+            var sHtml = $("pdfContainer").html();
+            sHtml = sHtml.replace(/</g, "StrTag").replace(/>/g, "EndTag");
+            window.open('../Product/GeneratePdf?html=' + sHtml,'_blanck');
+        });
     </script>
 
-}
 

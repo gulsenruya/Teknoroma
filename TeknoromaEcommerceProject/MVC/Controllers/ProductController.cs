@@ -12,9 +12,11 @@ namespace MVC.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService productService;
-        public ProductController(IProductService productService)
+        private readonly ICategoryService categoryService;
+        public ProductController(IProductService productService, ICategoryService categoryService)
         {
             this.productService = productService;
+            this.categoryService = categoryService;
         }
         public IActionResult Index(Guid id)
         {
@@ -27,7 +29,24 @@ namespace MVC.Controllers
         }
         public IActionResult AllProducts(Guid id)
         {
-            return View(productService.GetActive());
+            ProductVM productVM = new ProductVM();
+            productVM.Products = productService.GetActive();
+            productVM.Categories = categoryService.GetActive();
+            
+            return View(productVM);
         }
+        //public IActionResult ProductOfCategories(Guid id)
+        ////{
+        ////    ProductVM productVM = new ProductVM();
+        ////    productVM.Categories = categoryService.GetCategories(id);
+
+        ////    foreach (var item in productVM.Categories)
+        ////    {
+        ////        var products = productService.GetById(item.ID);
+        ////        item. = products;
+        ////    }
+        ////    return View(productVM.Category);
+
+        //}
     }
 }

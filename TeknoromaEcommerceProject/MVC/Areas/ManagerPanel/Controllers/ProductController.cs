@@ -9,20 +9,29 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MVC.Areas.ManagerPanel.Models;
+using Microsoft.AspNetCore.Hosting;
+using Syncfusion.HtmlConverter;
+using Syncfusion.Pdf;
+using MVC.Reports;
+using SelectPdf;
 
 namespace MVC.Areas.ManagerPanel.Controllers
 {
-    [Area ("ManagerPanel")]
+    [Area("ManagerPanel")]
     public class ProductController : Controller
     {
+        
         private readonly IProductService productService;
         private readonly ICategoryService categoryService;
         private readonly ISupplierService supplierService;
-        public ProductController(IProductService productService,ICategoryService categoryService,ISupplierService supplierService)
+        private readonly IWebHostEnvironment _hostingEnvironment;
+
+        public ProductController(IProductService productService, ICategoryService categoryService, ISupplierService supplierService, IWebHostEnvironment hostingEnvironment)
         {
             this.productService = productService;
             this.categoryService = categoryService;
             this.supplierService = supplierService;
+            _hostingEnvironment = hostingEnvironment;
         }
         // GET: Product
         public ActionResult Index()
@@ -32,7 +41,41 @@ namespace MVC.Areas.ManagerPanel.Controllers
             productCategoryVM.Categories = categoryService.GetActive();
             return View(productCategoryVM);
         }
+       public IActionResult GeneratePdf(string html)
+        {
+            html = html.Replace("StrTag", "<").Replace("EndTag", ">");
+            HtmlToPdf oHtmlToPdf = new HtmlToPdf();
+            SelectPdf.PdfDocument oPdfDocument = oHtmlToPdf.ConvertHtmlString(html);
+            byte[] pdf = oPdfDocument.Save();
+            oPdfDocument.Close();
+            return File(
+                pdf,
+                "application/pdf",
+                "ProductList.pdf"
+                );
 
+        }
+        public IActionResult Pdf(Product product)
+        {
+            ProductCategoryVM productCategoryVM = new ProductCategoryVM();
+            productCategoryVM.Products = productService.GetActive();
+          
+           
+            ProductReport productReport = new ProductReport(_hostingEnvironment);
+            return File(productReport.Report(productCategoryVM.Products), "application/pdf");
+
+            
+            //HtmlToPdfConverter converter = new HtmlToPdfConverter();
+            //WebKitConverterSettings settings = new WebKitConverterSettings();
+            //settings.WebKitPath = Path.Combine(_hostingEnvironment.ContentRootPath, "QtBinariesWindows");
+            //converter.ConverterSettings = settings;
+            //PdfDocument document = converter.Convert("http://localhost:44347/ManagerPanel/Product/product");
+            //MemoryStream memory = new MemoryStream();
+            //document.Save(memory);
+
+            //return File(memory.ToArray(), System.Net.Mime.MediaTypeNames.Application.Pdf, "Output.pdf");
+            
+        }
         // GET: Product/Details/5
         public ActionResult Details(int id)
         {
