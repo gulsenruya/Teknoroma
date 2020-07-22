@@ -75,7 +75,7 @@
                                             
                                                 <li>
                                                     <a asp-action="ProductOfCategories" asp-controller="Product" class="button button-block button-bold button--primary" asp-route-id="@item.ID">
-                                                        @Model.Categories.Where(x => x.ID == item.ID && ).FirstOrDefault().CategoryName
+                                                        @Model.Categories.Where(x => x.ID == item.ID).FirstOrDefault().CategoryName
                                                     </a>
                                                 </li>
                                             
